@@ -7,17 +7,40 @@ do {
     //Set the bool to false after each loop so that it only loops if it triggers the conditionals
     loop = false;
     // Getting User input
+
+    //Secondary loop to verify if individual input is a integer
+    bool valid = false;
+    do {
+        valid = false;
     Console.WriteLine("Please input the number you want to start the count with.");
     string? input = Console.ReadLine();
-    if (input != null)
-    numVal = Int32.Parse(input);
+    bool success = int.TryParse(input, out numVal);
+    if (input != null && success)
+     numVal = (int) Int32.Parse(input);
     Console.WriteLine("");
+    // use this to check
+    if (success == false) {
+        Console.WriteLine("Invalid input. Please submit a Integer.");
+        valid = true;
+    }
+    } while(valid);
+
+    //Secondary loop to verify if individual input is a integer
+     do {
+        valid = false;
     Console.WriteLine("Please input the number you want to stop the count at.");
     string? input2 = Console.ReadLine();
-    if (input2 != null)
-    numVal2 = Int32.Parse(input2);
+    bool success = int.TryParse(input2, out numVal2);
+    if (input2 != null && success)
+     numVal2 = (int) Int32.Parse(input2);
     Console.WriteLine("");
-
+    // use this to check
+    if (success == false) {
+         Console.WriteLine("Invalid input. Please submit a Integer.");
+        valid = true;
+    }
+    } while(valid);
+  
 // Calculating the amount of numbers that will be printed.
     int Count = ((numVal2 - numVal) + 1);
 
@@ -70,6 +93,6 @@ for(int i = numVal; i <= numVal2; i++) {
     Console.WriteLine(""); //BreakLine
 }
 
-Console.WriteLine("# of Sweet " + Sw);
-Console.WriteLine("# of Salty " + Sa);
-Console.WriteLine("# of Sweet'nSalty " + SwSa);
+Console.WriteLine("# of Sweet: " + Sw);
+Console.WriteLine("# of Salty: " + Sa);
+Console.WriteLine("# of Sweet'nSalty: " + SwSa);
